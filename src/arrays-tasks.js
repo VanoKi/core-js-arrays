@@ -268,9 +268,9 @@ function distinct(arr) {
  */
 function createNDimensionalArray(n, size) {
   if (n === 0) return 0;
-  return Array.from({ length: size }, () =>
-    createNDimensionalArray(n - 1, size)
-  );
+  return Array(size)
+    .fill()
+    .map(() => createNDimensionalArray(n - 1, size));
 }
 
 /**
