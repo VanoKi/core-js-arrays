@@ -19,4 +19,4 @@ function createNDimensionalArray(n, size) {
   );
 }
 
-console.log(createNDimensionalArray(3, 2));
+module.exports = createNDimensionalArray;
