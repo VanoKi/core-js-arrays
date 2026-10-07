@@ -1,22 +1,26 @@
 /**
- * Creates an n-dimensional array and fills it with zeros.
+ * Returns an element from the multidimensional array by the specified indices.
  *
- * @param {number} n - Depth of outter array (n > 0).
- * @param {number} size - Length of all arrays (size > 0).
- * @return {array} - The n-dimensional array filled with zeros.
+ * @param {any[]} arr - The input multidimensional array
+ * @param {number[]} indices - The array of indices
+ * @return {any} - An element from the array
  *
  * @example
- *    createNDimensionalArray(2, 3) => [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
- *    createNDimensionalArray(3, 2) => [[[0, 0], [0, 0]], [[0, 0], [0, 0]]]
- *    createNDimensionalArray(4, 2) => [[[[0, 0], [0, 0]], [[0, 0], [0, 0]]], [[[0, 0], [0, 0]], [[0, 0], [0, 0]]]]
- *    createNDimensionalArray(1, 1) => [0]
+ *   getElementByIndices([[1, 2], [3, 4], [5, 6]], [0,0]) => 1        (arr[0][0])
+ *   getElementByIndices(['one','two','three'], [2]) => 'three'  (arr[2])
+ *   getElementByIndices([[[ 1, 2, 3]]], [ 0, 0, 1 ]) => 2        (arr[0][0][1])
  */
-
-function createNDimensionalArray(n, size) {
-  if (n === 0) return 0;
-  return Array.from({ length: size }, () =>
-    createNDimensionalArray(n - 1, size)
-  );
+function getElementByIndices(arr, indices) {
+  return indices.reduce((cur, i) => cur[i], arr);
 }
 
-module.exports = createNDimensionalArray;
+console.log(
+  getElementByIndices(
+    [
+      [1, 2],
+      [3, 4],
+      [5, 6],
+    ],
+    [0, 0]
+  )
+);
